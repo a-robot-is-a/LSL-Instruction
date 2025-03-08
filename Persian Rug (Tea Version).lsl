@@ -46,7 +46,7 @@ default
                     llSetLinkPrimitiveParamsFast(2,[PRIM_POS_LOCAL,helper, PRIM_ROT_LOCAL,rot]);
                 }
             }
-            else { llResetScript(); llResetOtherScript("Ava2 (Tea Version)");}
+            else { llResetScript(); llResetOtherScript("Av2 (Tea Version)");}
         }
     }
 
