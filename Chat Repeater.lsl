@@ -2,11 +2,10 @@
 
 peopleScan = {}
 
-function state_entry()
-        peopleScan = ll.GetAgentList(AGENT_LIST_PARCEL,{})
-end
+function state_entry() end
 
 function touch_start(total_number)
+        peopleScan = ll.GetAgentList(AGENT_LIST_PARCEL,{})
         ll.Say(0, ll.List2String(ll.GetParcelDetails(ll.GetPos(),{PARCEL_DETAILS_NAME}),0))
 
         for i = 1, #peopleScan, 1 do
