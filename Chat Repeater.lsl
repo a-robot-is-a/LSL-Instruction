@@ -1,8 +1,12 @@
 -- size of the area : 48 x 48 = 2.304
 
 peopleScan = {}
+position = NULL_VECTOR
 
-function state_entry() end
+function state_entry()
+        -- get the position of the repeater
+        position = ll.GetPos()
+end
 
 function touch_start(total_number)
         peopleScan = ll.GetAgentList(AGENT_LIST_PARCEL,{})
