@@ -1,6 +1,13 @@
 function state_entry()
-   ll.Say(0, "Hello, Avatar!")
+
 end
+
+function listen(channel, name, id, message)
+    {
+        ll.Say(0, "Empfangen: " + message);
+    }
+end
+
 
 function touch_start(total_number)
    ll.Say(0, "Touched.")
