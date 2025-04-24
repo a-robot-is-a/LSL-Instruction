@@ -1,3 +1,5 @@
+-- size of the area : 48 x 48 = 2.304
+
 function state_entry()
 
 end
