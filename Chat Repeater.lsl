@@ -1,22 +1,39 @@
--- size of the area : 48 x 48 = 2.304
+// size of the area : 48 x 48 = 2.304
 
-peopleScan = {}
-position = NULL_VECTOR
+list people_scan;
+integer i;
 
-function state_entry()
-        -- get the position of the repeater
-        position = ll.GetPos()
-end
+vector REPEATER_POSITION;   // maybe :)
 
-function touch_start(total_number)
-        peopleScan = ll.GetAgentList(AGENT_LIST_PARCEL,{})
-        ll.Say(0, ll.List2String(ll.GetParcelDetails(ll.GetPos(),{PARCEL_DETAILS_NAME}),0))
+key person_id;
+string person_name;
+vector person_pos;
+string person_language;
 
-        for i = 1, #peopleScan, 1 do
+default
+{
+    state_entry()
+    {
+        REPEATER_POSITION = llGetPos();
+    }
 
-            ll.Say(0, ll.Key2Name(ll.List2String(peopleScan, i)))        
-        end 
-end
+    touch_start(integer total_number)
+    {
+        people_scan = llGetAgentList(AGENT_LIST_PARCEL,[]);
+        llSay(0, "\nScan for " + llList2String(llGetParcelDetails(llGetPos(),[PARCEL_DETAILS_NAME]),0));
+        
+        llSay(0, "Chat Repeater at " + (string)REPEATER_POSITION);
+        
+        for (i = 0; i < llGetListLength(people_scan); i++)
+        {
+            person_id = llList2Key(people_scan, i);
+            person_name = llKey2Name(llList2String(people_scan, i));
+            person_pos=llList2Vector(llGetObjectDetails(person_id,[OBJECT_POS]),0); 
+            person_language = llGetAgentLanguage(person_id);
+            
+            llSay(0, person_name + " in position " + (string)person_pos + " speaks " 
+            + person_language);            
+        }
+    }
+}
 
--- Simulate the state_entry event
-state_entry()
